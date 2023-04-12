@@ -32,5 +32,31 @@ public class CaesarCipherClient {
             System.out.println("Cannot connect to host");
             System.exit(1);
         }
+
+        //Now the client is ready to send and receive data. The BufferedReader
+        //object at the client side will receive messages sent by the PrintWriter object at
+        //the server side, and vice versa
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        String usrInput;
+
+        boolean temp = false;
+        while ((usrInput = stdIn.readLine())!=null){
+            output.println(usrInput);
+            //if ask for the key
+            if (usrInput.equals("Please send the key")){
+                temp = true;
+                System.out.println("Echo from Server: " + input.readLine());
+            }
+
+            if (temp == false) {
+                System.out.println("Echo from Server: " + input.readLine());
+            }
+
+        }
+        //Close the connections
+        output.close();
+        input.close();
+        stdIn.close();
+        link.close();
     }
 }
