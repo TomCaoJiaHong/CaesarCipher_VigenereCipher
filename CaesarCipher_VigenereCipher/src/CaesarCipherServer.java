@@ -19,5 +19,18 @@ public class CaesarCipherServer {
             System.out.println("Can't listen on 50000");
             System.exit(1);
         }
+        //if the connection is successful, we create a client socket (this is the mirror of
+        //the client on the server process), and print out a message that says we are
+        //listening for a connection. In other words, we are waiting for a client to connect to our server
+        Socket link = null;
+        System.out.println("Listening for connection ...");
+        //If the client sends a request, we accept the connection, again using a try-catch block
+        try {
+            link = serverSock.accept();
+        }
+        catch (IOException ie){
+            System.out.println("Accept failed");
+            System.exit(1);
+        }
     }
 }
