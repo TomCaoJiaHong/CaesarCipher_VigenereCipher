@@ -32,5 +32,15 @@ public class CaesarCipherServer {
             System.out.println("Accept failed");
             System.exit(1);
         }
+        //Otherwise (if the connection is successful), we display a message that the server
+        //is listening for input
+        System.out.println("Connection successful");
+        System.out.println("Listening for input ...");
+        //Methods getInputStream and getOutputStream of the Socket class are used to
+        //get references to streams associated with the socket in Step 3. For non-GUI
+        //applications, we wrap the OutputStream object with a PrintWriter object and the
+        //InputStream object with a BufferedReader object
+        PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+        BufferedReader input = new BufferedReader(new InputStreamReader(link.getInputStream()));
     }
 }
