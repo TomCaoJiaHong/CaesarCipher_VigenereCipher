@@ -50,5 +50,53 @@ public class CaesarCipherServer {
         String userInput;
         boolean encrypt = false;
         int key = 0;
+        //when user enter input
+        while ((userInput = input.readLine()) != null){
+            //if user ask for the key
+            if (userInput.equals("Please send the key")){
+                System.out.println("Message from the client: " + userInput);
+                //get a random number 1-25
+                Random random = new Random();
+                key = random.nextInt(25)+1;
+                output.println("The key is " + key);
+                //we need encrypt
+                encrypt = true;
+                continue;
+            }
+            //if we do not need to encrypt
+            if (encrypt == false){
+                System.out.println("Message from the client: " + userInput);
+                output.println(userInput);
+            }else{
+                //otherwise we encrypt
+                System.out.print("Message from the client: ");
+                for (char ch: userInput.toCharArray()){
+                    //we do not need to encrypt space
+                    if (Character.toString(ch).equals(" ")){
+                        System.out.print(ch);
+                    }else{
+                        int intC = (int)ch;
+                        int code = intC + key;
+                        //if the encrypted code out of range
+                        if (code > 90 && intC <= 90){
+                            System.out.print((char)(code - 26));
+                        } else if (code > 122) {
+                            System.out.print((char)(code - 26));
+                        }else {
+                            System.out.print((char)code);
+                        }
+                    }
+                }
+                //if user want to quitc
+                if (userInput.equals("Bye")){
+                    System.out.println("\nClosing connection");
+                    break;
+                }else{
+                    System.out.println("\nDecrypted: " + userInput);
+                    output.println("userInput");
+                }
+
+            }
+        }
     }
 }
