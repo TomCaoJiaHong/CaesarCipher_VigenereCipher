@@ -42,5 +42,13 @@ public class CaesarCipherServer {
         //InputStream object with a BufferedReader object
         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
         BufferedReader input = new BufferedReader(new InputStreamReader(link.getInputStream()));
+        //Now that we have set up the BufferedReader and the PrintWriter
+        //objects, sending and receiving data is very straightforward. We use the
+        //method readLine for receiving data and the method println for sending data
+        //(similar to an I/O console). The program ends when it receives a “Bye”
+        //message from the client
+        String userInput;
+        boolean encrypt = false;
+        int key = 0;
     }
 }
