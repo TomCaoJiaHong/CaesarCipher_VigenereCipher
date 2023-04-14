@@ -98,5 +98,10 @@ public class CaesarCipherServer {
 
             }
         }
+        //Finally, we close all the connections
+        output.close();
+        input.close();
+        link.close();
+        serverSock.close();
     }
 }
