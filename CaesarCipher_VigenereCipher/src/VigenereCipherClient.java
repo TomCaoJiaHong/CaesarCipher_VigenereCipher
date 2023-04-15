@@ -37,5 +37,20 @@ public class VigenereCipherClient {
         //the server side, and vice versa
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         String usrInput;
+
+        boolean temp = false;
+        while ((usrInput = stdIn.readLine())!=null){
+            output.println(usrInput);
+            //if ask for the key
+            if (usrInput.equals("Please send the key")){
+                temp = true;
+                System.out.println("Echo from Server: " + input.readLine());
+            }
+
+            if (temp == false) {
+                System.out.println("Echo from Server: " + input.readLine());
+            }
+
+        }
     }
 }
