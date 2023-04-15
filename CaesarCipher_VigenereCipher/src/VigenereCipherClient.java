@@ -50,7 +50,11 @@ public class VigenereCipherClient {
             if (temp == false) {
                 System.out.println("Echo from Server: " + input.readLine());
             }
-
         }
+        //Close the connections
+        output.close();
+        input.close();
+        stdIn.close();
+        link.close();
     }
 }
