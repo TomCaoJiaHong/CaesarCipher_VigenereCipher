@@ -32,5 +32,10 @@ public class VigenereCipherClient {
             System.out.println("Cannot connect to host");
             System.exit(1);
         }
+        //Now the client is ready to send and receive data. The BufferedReader
+        //object at the client side will receive messages sent by the PrintWriter object at
+        //the server side, and vice versa
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        String usrInput;
     }
 }
